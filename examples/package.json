@@ -1,0 +1,12 @@
+{
+  "name": "examples",
+  "scripts": {
+    "test:get": "tsc src/get.test.ts && node src/get.test.js",
+    "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i"
+  },
+  "devDependencies": {
+    "axios": "^1.1.2",
+    "@pdg/api": "file:..",
+    "typescript": "^4.8.4"
+  }
+}
