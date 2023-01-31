@@ -1,4 +1,5 @@
 import { Api, ApiOption, ApiError } from '@pdg/api';
+import { AxiosResponse } from 'axios';
 
 interface ResponseData {
   result: {
@@ -10,7 +11,7 @@ interface ResponseData {
 
 const option: ApiOption<ResponseData> = {
   baseUrl: 'http://localhost/api/v1',
-  async onResponse(res) {
+  async onResponse(res: AxiosResponse) {
     const responseData = res.data;
     if (!responseData || responseData.result == null) {
       throw new ApiError('예상치 못한 오류가 발생했습니다.');
