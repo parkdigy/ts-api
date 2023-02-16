@@ -213,7 +213,12 @@ function urlJoin() {
                         _this.option.onError(apiError);
                     reject(apiError);
                 };
-                axios(requestConfig)
+                var instance = axios.create();
+                var requestInterceptor;
+                if (_this.option.onRequest) {
+                    requestInterceptor = instance.interceptors.request.use(_this.option.onRequest);
+                }
+                instance.request(requestConfig)
                     .then(function (res) {
                     var resData = res.data;
                     if (_this.option.onResponse) {
@@ -231,7 +236,12 @@ function urlJoin() {
                         resolve(resData);
                     }
                 })
-                    .catch(fireError);
+                    .catch(fireError)
+                    .finally(function () {
+                    if (requestInterceptor) {
+                        instance.interceptors.request.eject(requestInterceptor);
+                    }
+                });
             });
         };
         this.option = option;

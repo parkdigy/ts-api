@@ -38,7 +38,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var api_1 = require("@pdg/api");
 var option = {
-    baseUrl: 'https://httpbin.org/get',
+    baseUrl: 'http://localhost/api/v1',
+    onRequest: function (config) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                console.log('onRequest', config);
+                return [2 /*return*/, config];
+            });
+        });
+    },
     onResponse: function (res) {
         return __awaiter(this, void 0, void 0, function () {
             var responseData;

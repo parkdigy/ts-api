@@ -95,7 +95,12 @@ class Api<T = any> {
         reject(apiError);
       };
 
-      axios<T>(requestConfig)
+      const instance = axios.create();
+      let requestInterceptor: number;
+      if (this.option.onRequest) {
+        requestInterceptor = instance.interceptors.request.use(this.option.onRequest);
+      }
+      instance.request<T>(requestConfig)
         .then((res) => {
           const { data: resData } = res;
           if (this.option.onResponse) {
@@ -112,7 +117,12 @@ class Api<T = any> {
             resolve(resData);
           }
         })
-        .catch(fireError);
+        .catch(fireError)
+          .finally(() => {
+            if (requestInterceptor) {
+              instance.interceptors.request.eject(requestInterceptor);
+            }
+          });
     });
   };
 }
