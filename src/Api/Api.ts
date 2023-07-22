@@ -1,4 +1,4 @@
-import axios, { AxiosResponse, Method } from 'axios';
+import axios, { AxiosResponse, InternalAxiosRequestConfig, Method } from 'axios';
 import { ApiError, ApiRequestData, ApiOption, ApiRequestOption, ApiRequestConfig } from './Api.types';
 import { notEmpty, joinUrl } from '../@util';
 
@@ -98,9 +98,17 @@ class Api<T = any> {
       const instance = axios.create();
       let requestInterceptor: number;
       if (this.option.onRequest) {
-        requestInterceptor = instance.interceptors.request.use(this.option.onRequest);
+        requestInterceptor = instance.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
+          if (this.option.onRequest) {
+            return this.option.onRequest(config, this.option.baseUrl, path, data, option);
+          } else {
+            return config;
+          }
+        });
       }
-      instance.request<T>(requestConfig)
+
+      instance
+        .request<T>(requestConfig)
         .then((res) => {
           const { data: resData } = res;
           if (this.option.onResponse) {
@@ -118,11 +126,11 @@ class Api<T = any> {
           }
         })
         .catch(fireError)
-          .finally(() => {
-            if (requestInterceptor) {
-              instance.interceptors.request.eject(requestInterceptor);
-            }
-          });
+        .finally(() => {
+          if (requestInterceptor) {
+            instance.interceptors.request.eject(requestInterceptor);
+          }
+        });
     });
   };
 }
