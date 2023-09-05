@@ -1,4 +1,4 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:true});var axios=require('axios');function _interopDefaultLegacy(e){return e&&typeof e==='object'&&'default'in e?e:{'default':e}}var axios__default=/*#__PURE__*/_interopDefaultLegacy(axios);/******************************************************************************
+'use strict';var axios=require('axios');/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -12,7 +12,7 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-/* global Reflect, Promise */
+/* global Reflect, Promise, SuppressedError, Symbol */
 
 var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf ||
@@ -76,7 +76,12 @@ function __generator(thisArg, body) {
         } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
-}//--------------------------------------------------------------------------------------------------------------------
+}
+
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};//--------------------------------------------------------------------------------------------------------------------
 var ApiError = /** @class */ (function (_super) {
     __extends(ApiError, _super);
     function ApiError(message, code) {
@@ -251,7 +256,7 @@ function urlJoin() {
                         _this.option.onError(apiError);
                     reject(apiError);
                 };
-                var instance = axios__default["default"].create();
+                var instance = axios.create();
                 var requestInterceptor;
                 if (_this.option.onRequest) {
                     requestInterceptor = instance.interceptors.request.use(function (config) { return __awaiter(_this, void 0, void 0, function () {

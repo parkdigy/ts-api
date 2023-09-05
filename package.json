@@ -1,8 +1,9 @@
 {
   "name": "@pdg/api",
   "title": "API Module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "API Module",
+  "type": "module",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -21,7 +22,7 @@
   ],
   "scripts": {
     "test:get": "cd examples && npm run test:get",
-    "build": "rollup -c",
+    "build": "rollup -c --bundleConfigAsCjs",
     "publish": "npm publish --access=public",
     "lint": "eslint './src/**/*.ts'"
   },
@@ -37,22 +38,22 @@
     "axios": "^1.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-eslint": "^8.0.2",
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.38.1",
-    "@typescript-eslint/parser": "^5.38.1",
-    "eslint": "8.22.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1",
-    "rollup": "^2.79.1",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-eslint": "^9.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint": "8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.3",
+    "rollup": "^3.28.1",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.34.0",
-    "typescript": "^4.8.3",
+    "rollup-plugin-typescript2": "^0.35.0",
+    "typescript": "^4.9.5",
     "url-join": "^5.0.0"
   }
 }
