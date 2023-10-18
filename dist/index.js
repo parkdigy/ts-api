@@ -1,4 +1,4 @@
-'use strict';var axios=require('axios');/******************************************************************************
+'use strict';/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -256,7 +256,7 @@ function urlJoin() {
                         _this.option.onError(apiError);
                     reject(apiError);
                 };
-                var instance = axios.create();
+                var instance = require('axios').default.create();
                 var requestInterceptor;
                 if (_this.option.onRequest) {
                     requestInterceptor = instance.interceptors.request.use(function (config) { return __awaiter(_this, void 0, void 0, function () {
