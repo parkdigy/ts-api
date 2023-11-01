@@ -1,7 +1,7 @@
 {
   "name": "@pdg/api",
   "title": "API Module",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "API Module",
   "type": "module",
   "types": "dist/index.d.ts",

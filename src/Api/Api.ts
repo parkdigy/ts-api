@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig, Method } from 'axios';
+import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig, Method } from 'axios';
 import { ApiError, ApiRequestData, ApiOption, ApiRequestOption, ApiRequestConfig } from './Api.types';
 import { notEmpty, joinUrl } from '../@util';
 
@@ -98,7 +98,7 @@ class Api<T = any> {
         reject(apiError);
       };
 
-      const instance: AxiosInstance = require('axios').default.create();
+      const instance: AxiosInstance = axios.create();
       let requestInterceptor: number;
       if (this.option.onRequest) {
         requestInterceptor = instance.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
