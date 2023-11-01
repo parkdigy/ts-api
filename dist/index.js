@@ -190,7 +190,9 @@ function urlJoin() {
         url = url.replace(/\/\//g, '/');
     }
     return url;
-}var Api = /** @class */ (function () {
+}var _a;
+var AxiosCreate = axios.create ? axios.create : (_a = require('axios').default) === null || _a === void 0 ? void 0 : _a.create;
+var Api = /** @class */ (function () {
     // constructor -------------------------------------------------------------------------------------------------------
     function Api(option) {
         var _this = this;
@@ -259,7 +261,7 @@ function urlJoin() {
                         _this.option.onError(apiError);
                     reject(apiError);
                 };
-                var instance = axios.create();
+                var instance = AxiosCreate();
                 var requestInterceptor;
                 if (_this.option.onRequest) {
                     requestInterceptor = instance.interceptors.request.use(function (config) { return __awaiter(_this, void 0, void 0, function () {
