@@ -218,6 +218,7 @@ function urlJoin() {
                     if (method === 'get') {
                         if (notEmpty(data)) {
                             var finalData = {};
+                            finalData[_this.option.timeParamName] = new Date().getTime();
                             for (var key in data) {
                                 if (data[key] != null) {
                                     finalData[key] = data[key];
@@ -227,7 +228,9 @@ function urlJoin() {
                         }
                     }
                     else {
-                        requestConfig.data = data;
+                        var finalData = __assign({}, data);
+                        finalData[_this.option.timeParamName] = new Date().getTime();
+                        requestConfig.data = finalData;
                     }
                 }
                 var setErrorInfo = function (err, status, response) {

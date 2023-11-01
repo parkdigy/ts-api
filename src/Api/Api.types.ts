@@ -38,6 +38,7 @@ export class ApiError<T = any> extends Error {
 
 export interface ApiOption<T = any> {
   baseUrl: string;
+  timeParamName: string;
   withCredentials?: boolean;
   headers?: AxiosRequestConfig['headers'];
   onRequest?(

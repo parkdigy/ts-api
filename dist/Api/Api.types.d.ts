@@ -24,6 +24,7 @@ export declare class ApiError<T = any> extends Error {
 }
 export interface ApiOption<T = any> {
     baseUrl: string;
+    timeParamName: string;
     withCredentials?: boolean;
     headers?: AxiosRequestConfig['headers'];
     onRequest?(config: InternalAxiosRequestConfig, baseUrl: string, path: string, requestData?: ApiRequestData, requestOption?: ApiRequestOption): Promise<InternalAxiosRequestConfig>;

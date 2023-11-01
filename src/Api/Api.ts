@@ -55,6 +55,7 @@ class Api<T = any> {
         if (method === 'get') {
           if (notEmpty(data)) {
             const finalData: ApiRequestData = {};
+            finalData[this.option.timeParamName] = new Date().getTime();
             for (const key in data) {
               if (data[key] != null) {
                 finalData[key] = data[key];
@@ -63,7 +64,9 @@ class Api<T = any> {
             requestConfig.url += `?${new URLSearchParams(finalData).toString()}`;
           }
         } else {
-          requestConfig.data = data;
+          const finalData: ApiRequestData = { ...data };
+          finalData[this.option.timeParamName] = new Date().getTime();
+          requestConfig.data = finalData;
         }
       }
 
