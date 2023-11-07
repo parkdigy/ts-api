@@ -230,9 +230,15 @@ var Api = /** @class */ (function () {
                         }
                     }
                     else {
-                        var finalData = __assign({}, data);
-                        finalData[_this.option.timeParamName] = new Date().getTime();
-                        requestConfig.data = finalData;
+                        if (data instanceof FormData) {
+                            data.append(_this.option.timeParamName, "".concat(new Date().getTime()));
+                            requestConfig.data = data;
+                        }
+                        else {
+                            var finalData = __assign({}, data);
+                            finalData[_this.option.timeParamName] = new Date().getTime();
+                            requestConfig.data = finalData;
+                        }
                     }
                 }
                 var setErrorInfo = function (err, status, response) {

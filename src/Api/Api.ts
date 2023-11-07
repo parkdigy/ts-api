@@ -66,9 +66,14 @@ class Api<T = any> {
             requestConfig.url += `?${new URLSearchParams(finalData).toString()}`;
           }
         } else {
-          const finalData: ApiRequestData = { ...data };
-          finalData[this.option.timeParamName] = new Date().getTime();
-          requestConfig.data = finalData;
+          if (data instanceof FormData) {
+            data.append(this.option.timeParamName, `${new Date().getTime()}`);
+            requestConfig.data = data;
+          } else {
+            const finalData: ApiRequestData = { ...data };
+            finalData[this.option.timeParamName] = new Date().getTime();
+            requestConfig.data = finalData;
+          }
         }
       }
 
