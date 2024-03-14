@@ -1,7 +1,7 @@
 {
   "name": "@pdg/api",
   "title": "API Module",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "API Module",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -24,7 +24,8 @@
     "test:get": "cd examples && npm run test:get",
     "build": "rollup -c --bundleConfigAsCjs",
     "publish": "npm publish --access=public",
-    "lint": "eslint './src/**/*.ts'"
+    "lint": "eslint './src/**/*.ts'",
+    "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i"
   },
   "author": "YOUNG CHUL PARK",
   "license": "MIT",
@@ -38,22 +39,21 @@
     "axios": "^1.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.4",
-    "@rollup/plugin-eslint": "^9.0.4",
-    "@rollup/plugin-node-resolve": "^15.2.1",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
-    "eslint": "8.48.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^5.0.0",
-    "prettier": "^3.0.3",
-    "rollup": "^3.28.1",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-eslint": "^9.0.5",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "rollup": "^4.13.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.35.0",
-    "typescript": "^4.9.5",
-    "url-join": "^5.0.0"
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.4.2"
   }
 }

@@ -1,1 +1,1 @@
-export declare function joinUrl(...paths: string[]): string;
+export declare function joinUrl(...parts: string[]): string;

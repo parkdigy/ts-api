@@ -11,9 +11,10 @@ interface ResponseData {
 
 const option: ApiOption<ResponseData> = {
   baseUrl: 'http://localhost/api/v1',
+  timeParamName: '_t_',
   async onRequest(config: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> {
-    console.log('onRequest', config)
-    return config
+    console.log('onRequest', config);
+    return config;
   },
   async onResponse(res: AxiosResponse) {
     const responseData = res.data;
