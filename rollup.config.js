@@ -15,7 +15,7 @@ const externalDeps = Object.keys(packageJson.dependencies || {}).concat(
 const getOutput = (path, format) => ({
   file: path,
   format: format,
-  sourcemap: true,
+  sourcemap: false,
   compact: true,
   exports: 'named',
 });

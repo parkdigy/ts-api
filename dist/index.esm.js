@@ -263,4 +263,4 @@ var Api = /** @class */ (function () {
         return this.run('delete', path, data, option);
     };
     return Api;
-}());export{Api,ApiError};//# sourceMappingURL=index.esm.js.map
+}());export{Api,ApiError};

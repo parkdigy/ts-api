@@ -263,4 +263,4 @@ var Api = /** @class */ (function () {
         return this.run('delete', path, data, option);
     };
     return Api;
-}());exports.Api=Api;exports.ApiError=ApiError;//# sourceMappingURL=index.js.map
+}());exports.Api=Api;exports.ApiError=ApiError;
