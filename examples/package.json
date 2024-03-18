@@ -6,6 +6,7 @@
   },
   "devDependencies": {
     "@pdg/api": "file:..",
+    "@pdg/util": "^1.0.0",
     "axios": "^1.6.7",
     "tsx": "^4.7.1",
     "typescript": "^4.9.5"

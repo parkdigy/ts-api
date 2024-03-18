@@ -1,4 +1,4 @@
-'use strict';var axios=require('axios');/******************************************************************************
+'use strict';var axios=require('axios'),util=require('@pdg/util');/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -91,46 +91,7 @@ var ApiError = /** @class */ (function (_super) {
         return _this;
     }
     return ApiError;
-}(Error));var empty = function (v) {
-    var result = false;
-    if (v == null) {
-        result = true;
-    }
-    else if (typeof v === 'string') {
-        result = v === '';
-    }
-    else if (typeof v === 'object') {
-        if (Array.isArray(v)) {
-            result = v.length === 0;
-        }
-        else if (!(v instanceof Date)) {
-            result = Object.entries(v).length === 0;
-        }
-    }
-    return result;
-};
-var notEmpty = function (v) {
-    return !empty(v);
-};function joinUrl() {
-    var parts = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        parts[_i] = arguments[_i];
-    }
-    return parts.reduce(function (acc, part) {
-        if (acc === '') {
-            return part;
-        }
-        else if (part.startsWith('?')) {
-            return "".concat(acc).concat(part);
-        }
-        else if (acc.endsWith('/')) {
-            return "".concat(acc).concat(part.startsWith('/') ? part.substring(1) : part);
-        }
-        else {
-            return "".concat(acc).concat(part.startsWith('/') ? part : "/".concat(part));
-        }
-    });
-}var _a;
+}(Error));var _a;
 var AxiosCreate = axios.create ? axios.create : (_a = require('axios').default) === null || _a === void 0 ? void 0 : _a.create;
 var Api = /** @class */ (function () {
     // constructor -------------------------------------------------------------------------------------------------------
@@ -155,10 +116,10 @@ var Api = /** @class */ (function () {
                 if (option === null || option === void 0 ? void 0 : option.raw) {
                     requestConfig.responseType = (option === null || option === void 0 ? void 0 : option.rawResponseType) || 'arraybuffer';
                 }
-                requestConfig.url = joinUrl(_this.option.baseUrl, path.replace(/\./g, '/'));
+                requestConfig.url = util.urlJoin(_this.option.baseUrl, path.replace(/\./g, '/'));
                 if (data) {
                     if (method === 'get') {
-                        if (notEmpty(data)) {
+                        if (util.notEmpty(data)) {
                             var finalData = {};
                             finalData[_this.option.timeParamName] = new Date().getTime();
                             for (var key in data) {

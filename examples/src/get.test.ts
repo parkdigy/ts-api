@@ -1,4 +1,4 @@
-import { Api, ApiOption, ApiError } from '@pdg/api';
+import { Api, ApiOption, ApiError } from '../../src';
 import { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
 interface ResponseData {

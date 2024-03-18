@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig, Method } from 'axios';
 import { ApiError, ApiRequestData, ApiOption, ApiRequestOption, ApiRequestConfig } from './Api.types';
-import { notEmpty, joinUrl } from '../@util';
+import { notEmpty, urlJoin } from '@pdg/util';
 
 const AxiosCreate = axios.create ? axios.create : require('axios').default?.create;
 
@@ -51,7 +51,7 @@ class Api<T = any> {
         requestConfig.responseType = option?.rawResponseType || 'arraybuffer';
       }
 
-      requestConfig.url = joinUrl(this.option.baseUrl, path.replace(/\./g, '/'));
+      requestConfig.url = urlJoin(this.option.baseUrl, path.replace(/\./g, '/'));
 
       if (data) {
         if (method === 'get') {
