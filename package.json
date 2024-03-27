@@ -1,7 +1,7 @@
 {
   "name": "@pdg/api",
   "title": "API Module",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "API Module",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -36,7 +36,7 @@
     "javascript"
   ],
   "peerDependencies": {
-    "@pdg/util": "^1.0.13",
+    "@pdg/util": "^1.0.19",
     "axios": "^1.0.0"
   },
   "devDependencies": {
