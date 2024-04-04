@@ -1,7 +1,7 @@
 {
   "name": "@pdg/api",
   "title": "API Module",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "API Module",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
   "scripts": {
     "test:get": "cd examples && npm run test:get",
     "build": "rollup -c --bundleConfigAsCjs",
-    "publish": "npm publish --access=public",
+    "pub": "npm i && npm run build && npm publish --access=public && rm ./.git/hooks/pre-commit",
     "lint": "eslint './src/**/*.ts'",
     "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i"
   },
@@ -36,7 +36,7 @@
     "javascript"
   ],
   "peerDependencies": {
-    "@pdg/util": "^1.0.19",
+    "@pdg/util": "^1.0.20",
     "axios": "^1.0.0"
   },
   "devDependencies": {
