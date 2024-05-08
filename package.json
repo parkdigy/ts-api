@@ -1,7 +1,7 @@
 {
   "name": "@pdg/api",
   "title": "API Module",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "API Module",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -36,25 +36,25 @@
     "javascript"
   ],
   "peerDependencies": {
-    "@pdg/util": "^1.0.20",
+    "@pdg/util": "^1.0.21",
     "axios": "^1.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-eslint": "^9.0.5",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.1.3",
     "prettier": "^3.2.5",
-    "rollup": "^4.13.0",
+    "rollup": "^4.17.2",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
-    "typescript": "^4.9.5"
+    "typescript": "^5.4.5"
   }
 }
