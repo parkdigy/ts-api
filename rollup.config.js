@@ -6,6 +6,10 @@ import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 import del from 'rollup-plugin-delete';
 
+import fs from 'fs';
+import path from 'path';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const packageJson = require('./package.json');
 
 const externalDeps = Object.keys(packageJson.dependencies || {}).concat(
@@ -39,6 +43,28 @@ const getConfig = () => ({
       include: /node_modules/,
     }),
     typescript({ useTsconfigDeclarationDir: true }),
+    // *.private 디렉토리, *.private.d.ts 파일 제거
+    {
+      name: 'remove-d-ts-plugin',
+      generateBundle() {
+        const removeFromDir = (dir) => {
+          const files = fs.readdirSync(dir);
+          files.forEach((file) => {
+            const filePath = path.join(dir, file);
+            if (fs.statSync(filePath).isDirectory()) {
+              if (filePath.endsWith('.private')) {
+                fs.rmSync(filePath, { recursive: true, force: true });
+              } else {
+                removeFromDir(filePath);
+              }
+            } else {
+              filePath.endsWith('.private.d.ts') && fs.unlinkSync(filePath);
+            }
+          });
+        };
+        removeFromDir('./dist');
+      },
+    },
   ],
 });
 
